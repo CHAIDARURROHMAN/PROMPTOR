@@ -26,13 +26,34 @@ function kirimPesanSimulasi() {
         jawaban = '🚫 **Mohon maaf, fokus Promptor adalah pada Digitalisasi Pembelajaran.** Saya tidak memiliki data tentang hal di luar pendidikan. Silakan ajukan pertanyaan yang relevan.';
     } 
     // B. Logic Pertanyaan Pendidikan Spesifik (Rule-Based)
+    
+    // 1. LOGIKA BARU: Khusus Bahasa Python/Program (Paling Spesifik)
+    else if (pertanyaanLower.includes('python') || pertanyaanLower.includes('phyton')) {
+        jawaban = 'Python adalah bahasa pemrograman tingkat tinggi yang populer untuk AI, *data science*, dan pengembangan web. Keunggulannya adalah sintaksnya yang mudah dibaca, sangat cocok untuk dipelajari guru dan siswa yang baru memulai *coding*.';
+    } 
+    
+    // 2. LOGIKA BARU: Definisi Pemrograman
+    else if (pertanyaanLower.includes('apa itu') && (pertanyaanLower.includes('pemrograman') || pertanyaanLower.includes('coding'))) {
+        jawaban = 'Pemrograman adalah proses menulis instruksi (kode) untuk memberitahu komputer cara menyelesaikan suatu masalah atau melakukan tugas tertentu. Ini adalah keterampilan penting untuk mengembangkan pemikiran logis (Tujuan d).';
+    }
+    
+    // 3. LOGIKA Kurikulum Merdeka (Tetap)
     else if (pertanyaanLower.includes('rpp') && pertanyaanLower.includes('ai')) {
         jawaban = 'Ide *prompt* untuk RPP: Tentukan tujuan pembelajaran, lalu minta AI membuat skenario *ice breaking* dan 3 soal HOTS formatif.';
     } else if (pertanyaanLower.includes('kurikulum merdeka') || pertanyaanLower.includes('p5')) {
         jawaban = 'Kurikulum Merdeka menekankan pada **Pembelajaran Mendalam** dan **Projek P5**. Untuk panduan, silakan kunjungi [Portal Guru Kemendikbud].';
-    } else if (pertanyaanLower.includes('coding') || pertanyaanLower.includes('pemrograman')) {
-        jawaban = 'Memperkenalkan *coding* ke siswa bisa dimulai dengan *tool* visual seperti **Scratch** atau **Code.org**. Ini melatih pemikiran logis.';
     } 
+    
+    // 4. LOGIKA Pemrograman Umum/Tools (Lebih Umum)
+    else if (pertanyaanLower.includes('coding') || pertanyaanLower.includes('pemrograman')) {
+        jawaban = 'Memperkenalkan *coding* ke siswa bisa dimulai dengan *tool* visual seperti **Scratch** atau **Code.org**. Ini melatih pemikiran logis.';
+    }
+    
+    // 5. LOGIKA Prompting
+    else if (pertanyaanLower.includes('prompt') || pertanyaanLower.includes('cerdas')) {
+        jawaban = 'Kunci dari *prompt* cerdas adalah **konteks, peran, dan format output**. Selalu sebutkan: (1) Anda adalah guru, (2) Kelas/Mata Pelajaran, dan (3) Tujuan yang ingin dicapai.';
+    }
+    
     // C. Logic Fallback (Jawaban Default)
     else {
         jawaban = 'Maaf, saya belum diprogram untuk menjawab pertanyaan tersebut secara spesifik. Silakan coba ajukan pertanyaan yang lebih fokus pada **AI atau Digitalisasi Pembelajaran**.';
