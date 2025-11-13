@@ -3,36 +3,25 @@
 <head>
     <title>Promptor - Asisten AI Guru</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Gaya Sederhana untuk Website One-Page */
-        body { font-family: sans-serif; margin: 0; background-color: #f4f7f6; }
-        .container { max-width: 600px; margin: 20px auto; background-color: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .chat-display { height: 300px; overflow-y: scroll; border: 1px solid #e0e0e0; padding: 10px; margin-bottom: 15px; border-radius: 6px; background-color: #fcfcfc; }
-        .pesan-bot { background: #e6f3ff; padding: 8px; border-radius: 5px 15px 15px 5px; margin-bottom: 10px; max-width: 80%; text-align: left; }
-        .pesan-user { background: #dceefc; padding: 8px; border-radius: 15px 5px 5px 15px; margin-bottom: 10px; max-width: 80%; margin-left: auto; text-align: right; }
-        #inputForm { display: flex; }
-        #userInput { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 20px 0 0 20px; outline: none; }
-        #sendButton { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 0 20px 20px 0; cursor: pointer; }
-        #disclaimer { color: #cc0000; font-size: 0.8em; margin-bottom: 15px; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1 style="text-align: center; color: #007bff;">🤖 Promptor</h1>
-        <p id="disclaimer">⚠️ **PERHATIAN:** Fokus hanya pada Digitalisasi dan Edukasi. Pertanyaan di luar topik (misal masalah kendaraan, dsb.) akan ditolak.</p>
+        <h1 style="text-align: center;">🤖 Promptor</h1>
+        <p id="disclaimer">⚠️ **PERHATIAN:** Fokus hanya pada Digitalisasi dan Edukasi. Pertanyaan di luar topik akan ditolak.</p>
 
         <div id="chatDisplay" class="chat-display">
             <div class="pesan-bot">Halo! Saya adalah **Promptor**, Asisten AI Anda untuk Pendidikan. Bagaimana saya bisa membantu Anda membuat *prompt* cerdas hari ini?</div>
         </div>
 
-        <form id="inputForm" onsubmit="event.preventDefault(); kirimPesan();">
+        <form id="inputForm" onsubmit="event.preventDefault(); kirimPesanSimulasi();">
             <input type="text" id="userInput" placeholder="Ketik pertanyaan Anda..." required>
             <button id="sendButton" type="submit">Kirim</button>
         </form>
 
-        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+        <div class="about-section">
             <h2>Tentang Promptor</h2>
-            <p>Promptor adalah proyek yang bertujuan untuk mendukung guru dalam implementasi AI dan Kurikulum Merdeka di kelas.</p>
+            <p>Promptor adalah simulasi yang mendukung guru dalam implementasi AI dan Kurikulum Merdeka, sejalan dengan tema **Digitalisasi Pembelajaran**.</p>
         </div>
     </div>
     
