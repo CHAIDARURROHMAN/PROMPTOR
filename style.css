@@ -1,0 +1,98 @@
+/* style.css (Desain Nuansa Malam Hari) */
+
+/* -------------------------- Pengaturan Dasar Body -------------------------- */
+body { 
+    font-family: sans-serif; 
+    margin: 0; 
+    /* Warna background dasar gelap (Langit Malam) */
+    background-color: #121212; 
+    background-image: linear-gradient(to bottom right, #0a0a0a, #1a2a3a); 
+    color: #e0e0e0; /* Warna teks dasar terang */
+}
+
+/* -------------------------- Container Utama (Card) -------------------------- */
+.container { 
+    max-width: 600px; 
+    margin: 20px auto; 
+    /* Warna container lebih terang dari background */
+    background-color: #1e1e1e; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); 
+}
+
+/* -------------------------- Tampilan Chat -------------------------- */
+.chat-display { 
+    height: 300px; 
+    overflow-y: scroll; 
+    border: 1px solid #333333; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border-radius: 6px; 
+    background-color: #242424; /* Area chat paling gelap */
+}
+
+/* Styling pesan Bot */
+.pesan-bot { 
+    background: #3a3a5a; /* Warna biru gelap yang teduh */
+    padding: 8px; 
+    border-radius: 5px 15px 15px 5px; 
+    margin-bottom: 10px; 
+    max-width: 80%; 
+    text-align: left; 
+    color: #f0f0f0; 
+}
+
+/* Styling pesan User */
+.pesan-user { 
+    background: #4a4a4a; /* Warna abu-abu yang netral */
+    padding: 8px; 
+    border-radius: 15px 5px 5px 15px; 
+    margin-bottom: 10px; 
+    max-width: 80%; 
+    margin-left: auto; 
+    text-align: right; 
+    color: #ffffff; 
+}
+
+/* -------------------------- Input dan Tombol -------------------------- */
+#inputForm { 
+    display: flex; 
+}
+
+#userInput { 
+    flex-grow: 1; 
+    padding: 10px; 
+    border: 1px solid #444; 
+    border-radius: 20px 0 0 20px; 
+    outline: none; 
+    background-color: #333; 
+    color: #e0e0e0; 
+}
+
+#sendButton { 
+    padding: 10px 15px; 
+    background-color: #5b7bff; /* Biru yang menyala */
+    color: white; 
+    border: none; 
+    border-radius: 0 20px 20px 0; 
+    cursor: pointer; 
+}
+
+/* -------------------------- Heading dan Lain-lain -------------------------- */
+h1, h2 { 
+    color: #87ceeb; /* Judul warna biru langit terang */
+}
+
+#disclaimer { 
+    color: #ff6b6b; /* Warna merah untuk peringatan */
+    font-size: 0.8em; 
+    margin-bottom: 15px; 
+    text-align: center; 
+}
+
+.about-section {
+    margin-top: 30px; 
+    border-top: 1px solid #333; 
+    padding-top: 20px;
+}
