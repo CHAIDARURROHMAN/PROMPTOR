@@ -1,42 +1,51 @@
-async function kirimPesan() {
+// script.js
+function kirimPesanSimulasi() {
     const inputElement = document.getElementById('userInput');
     const chatDisplay = document.getElementById('chatDisplay');
     const sendButton = document.getElementById('sendButton');
+    
     const pertanyaan = inputElement.value.trim();
+    const pertanyaanLower = pertanyaan.toLowerCase();
 
     if (!pertanyaan) return;
 
     // 1. Tampilkan pesan user
     chatDisplay.innerHTML += `<div class="pesan-user">${pertanyaan}</div>`;
     
-    // 2. Bersihkan input dan nonaktifkan tombol saat menunggu
+    // 2. Siapkan tampilan input saat menunggu jawaban
     inputElement.value = '';
-    sendButton.disabled = true;
+    sendButton.disabled = true; 
     inputElement.placeholder = 'Promptor sedang berpikir...';
-    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    chatDisplay.scrollTop = chatDisplay.scrollHeight; 
 
-    try {
-        // 3. Panggil API Backend Python di http://127.0.0.1:5000/api/promptor
-        const response = await fetch('http://127.000.1:5000/api/promptor', { 
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: pertanyaan })
-        });
-        
-        const data = await response.json();
-        let jawaban = data.jawaban || 'Maaf, terjadi kesalahan saat memproses jawaban.';
+    // ------------------- LOGIKA RESPON (SIMULASI AI) -------------------
+    let jawaban = '';
 
-        // 4. Tampilkan jawaban dari API
+    // A. Logic Pertanyaan di Luar Topik (Off-Topic Guardrail)
+    if (pertanyaanLower.includes('motor') || pertanyaanLower.includes('masak') || pertanyaanLower.includes('cuaca') || pertanyaanLower.includes('berita')) {
+        jawaban = '🚫 **Mohon maaf, fokus Promptor adalah pada Digitalisasi Pembelajaran.** Saya tidak memiliki data tentang hal di luar pendidikan. Silakan ajukan pertanyaan yang relevan.';
+    } 
+    // B. Logic Pertanyaan Pendidikan Spesifik (Rule-Based)
+    else if (pertanyaanLower.includes('rpp') && pertanyaanLower.includes('ai')) {
+        jawaban = 'Ide *prompt* untuk RPP: Tentukan tujuan pembelajaran, lalu minta AI membuat skenario *ice breaking* dan 3 soal HOTS formatif.';
+    } else if (pertanyaanLower.includes('kurikulum merdeka') || pertanyaanLower.includes('p5')) {
+        jawaban = 'Kurikulum Merdeka menekankan pada **Pembelajaran Mendalam** dan **Projek P5**. Untuk panduan, silakan kunjungi [Portal Guru Kemendikbud].';
+    } else if (pertanyaanLower.includes('coding') || pertanyaanLower.includes('pemrograman')) {
+        jawaban = 'Memperkenalkan *coding* ke siswa bisa dimulai dengan *tool* visual seperti **Scratch** atau **Code.org**. Ini melatih pemikiran logis.';
+    } 
+    // C. Logic Fallback (Jawaban Default)
+    else {
+        jawaban = 'Maaf, saya belum diprogram untuk menjawab pertanyaan tersebut secara spesifik. Silakan coba ajukan pertanyaan yang lebih fokus pada **AI atau Digitalisasi Pembelajaran**.';
+    }
+    // ------------------------------------------------------------------
+
+    // 3. Tampilkan jawaban bot setelah jeda (simulasi loading)
+    setTimeout(() => {
         chatDisplay.innerHTML += `<div class="pesan-bot">${jawaban}</div>`;
-
-    } catch (error) {
-        // 5. Tangani error koneksi
-        console.error('Fetch Error:', error);
-        chatDisplay.innerHTML += `<div class="pesan-bot" style="color:red;">Koneksi Gagal. Pastikan server app.py sudah berjalan.</div>`;
-    } finally {
-        // 6. Aktifkan kembali input
+        
+        // 4. Aktifkan kembali input
         sendButton.disabled = false;
         inputElement.placeholder = 'Ketik pertanyaan Anda...';
         chatDisplay.scrollTop = chatDisplay.scrollHeight;
-    }
+    }, 800); 
 }
